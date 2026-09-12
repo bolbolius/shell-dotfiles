@@ -1,0 +1,135 @@
+# Starship Configuration
+# Aesthetic: Modern Sleek Pill / Subtle Capsule Layout with Tokyo Night Palette
+
+command_timeout = 750
+add_newline = true
+
+# Left prompt: OS badge, directory pill, git badge, background jobs, execution duration, failure status
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$jobs\
+$cmd_duration\
+$status\
+$line_break\
+$character"""
+
+# Right prompt: Clean pill with clock
+right_format = """$time"""
+
+# --- Custom Tokyo Night Palette ---
+palette = "tokyo_night"
+
+[palettes.tokyo_night]
+surface = "#24283b"
+surface_bright = "#292e42"
+fg = "#c0caf5"
+muted = "#565f89"
+blue = "#7aa2f7"
+cyan = "#7dcfff"
+green = "#9ece6a"
+magenta = "#bb9af7"
+red = "#f7768e"
+yellow = "#e0af68"
+orange = "#ff9e64"
+
+# --- Line 2: Character Prompt ---
+[character]
+success_symbol = "[󱞪](bold cyan) "
+error_symbol = "[󱞪](bold red) "
+vimcmd_symbol = "[󰌌](bold green) "
+
+# --- OS Badge (Void Green) ---
+[os]
+disabled = false
+style = "bold green"
+format = "[$symbol]($style)"
+
+[os.symbols]
+Void = " "
+Linux = "󰌽 "
+Ubuntu = "󰕈 "
+Arch = "󰣇 "
+Debian = "󰣚 "
+Fedora = "󰣛 "
+Macos = "󰀵 "
+
+# --- Directory (Modern capsule) ---
+[directory]
+style = "bold blue"
+format = "[](surface)[󰉋 ](bold cyan bg:surface)[$path](bold fg bg:surface)[](surface) "
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 󰌾"
+read_only_style = "bold red bg:surface"
+home_symbol = "~"
+
+# --- Git ---
+[git_branch]
+symbol = " "
+style = "bold magenta"
+format = "[](surface)[$symbol$branch](bold magenta bg:surface)[](surface) "
+
+[git_status]
+disabled = true
+format = '([ $all_status$ahead_behind]($style))[](surface) '
+conflicted = "󰞇 "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = " "
+stashed = "󰏖 "
+modified = "󱗜 "
+staged = "󰐖 "
+renamed = "» "
+deleted = "✘ "
+
+# --- Command Duration ---
+[cmd_duration]
+min_time = 2_000
+show_milliseconds = false
+format = "[](surface)[󱎫 $duration](bold yellow bg:surface)[](surface) "
+
+# --- Background Jobs ---
+[jobs]
+symbol = "✦ "
+style = "bold orange bg:surface"
+format = "[](surface)[$symbol$number]($style)[](surface) "
+
+# --- Exit Status (Only appears on failure) ---
+[status]
+disabled = false
+format = "[](surface)[✘ $status](bold red bg:surface)[](surface) "
+symbol = "✘"
+
+# --- Time (Right Prompt Capsule) ---
+[time]
+disabled = false
+time_format = "%R"
+format = "[](surface)[󱑎 $time](bold muted bg:surface)[](surface)"
+
+# --- Disable unused language noise ---
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[package]
+disabled = true
+[nodejs]
+disabled = true
+[python]
+disabled = true
+[rust]
+disabled = true
+[golang]
+disabled = true
+[lua]
+disabled = true
+[php]
+disabled = true
+[ruby]
+disabled = true
+[docker_context]
+disabled = true
