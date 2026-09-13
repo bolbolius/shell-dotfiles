@@ -1,4 +1,4 @@
-# shell-dotfiles
+# terminal-dotfiles
 
 This is my personal shell setup focused on speed, minimalism, and a cohesive Tokyo Night palette.
 
